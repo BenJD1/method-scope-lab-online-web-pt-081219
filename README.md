@@ -86,6 +86,7 @@ We are getting a NameError because `status` is undefined. Wait a minute, you mig
 **Go back and comment out lines 11 and 12 of `rescue_princess_peach.rb`.**
 
 Run the test suite and you'll see that we are passing all of our tests. If you open up the `spec/rescue_princess_peach_spec.rb` file, you'll see the following test:
+
 ```ruby
 require "spec_helper"
 
