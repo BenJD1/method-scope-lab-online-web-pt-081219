@@ -8,15 +8,16 @@
 ## Instructions
 
 ### Part I: Passing a Variable Into a Method
+
 Open up `lib/catch_phrase.rb`. You should see the following method:
+
 ```ruby
 def catch_phrase
   puts phrase
 end
 ```
 
-Note that the method is trying to `puts` out a variable called `phrase`. 
-Note that the method is trying to `puts` out a variable called `phrase`.
+ Note that the method is trying to `puts` out a variable called `phrase`.
 
 Let's take a look at the test for this method in `spec/catch_phrase_spec.rb`:
 
