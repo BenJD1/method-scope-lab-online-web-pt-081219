@@ -46,8 +46,6 @@ We need to pass `phrase` into our `#catch_phrase` as an argument. Let's do it:
 
 ```ruby
 require "spec_helper"
-describe "#catch_phrase" do 
-  it "puts out a catch phrase" do 
 describe "#catch_phrase" do
   it "puts out a catch phrase" do
     phrase = "It's-a me, Mario!"
@@ -55,28 +53,34 @@ describe "#catch_phrase" do
   end
 end
 ```
+
 ### Part II: Understanding Method Scope
+
 Open up `lib/rescue_princess_peach.rb` and take a look at the following method:
+
 ```ruby
 def rescue_princess_peach
   status = "rescued"
   puts "Hooray! Mario has rescued Princess Peach."
 end
 ```
+
 Notice that the body of this method is setting a variable, `status` equal to a value of `"rescued"`. Do you think we will be able to access this variable outside of the method? Let's find out!
-1 . Comment back in the following lines in your `lib/rescue_princess_peach.rb` file: 
+ 
 1 . Comment back in the following lines in your `lib/rescue_princess_peach.rb` file:
+
 ```ruby
 rescue_princess_peach
 puts status
 ```
+
 2 . Run the file with `ruby lib/rescue_princess_peach.rb` in your terminal. You should see the following:
+
 ```ruby
 Hooray! Mario has rescued Princess Peach.
 lib/rescue_princess_peach.rb:12:in `<main>': undefined local variable or method `status' for main:Object (NameError)
 ```
 
-We are getting a NameError because `status` is undefined. Wait a minute, you might be wondering. Didn't we define `status` inside the `#rescue_princess_peach` method? We did, but **variables defined inside a method are not available outside of that method**. 
 We are getting a NameError because `status` is undefined. Wait a minute, you might be wondering. Didn't we define `status` inside the `#rescue_princess_peach` method? We did, but **variables defined inside a method are not available outside of that method**.
 
 **Go back and comment out lines 11 and 12 of `rescue_princess_peach.rb`.**
@@ -84,12 +88,11 @@ We are getting a NameError because `status` is undefined. Wait a minute, you mig
 Run the test suite and you'll see that we are passing all of our tests. If you open up the `spec/rescue_princess_peach_spec.rb` file, you'll see the following test:
 ```ruby
 require "spec_helper"
+
 describe "#rescue_princess_peach" do
   it "outputs a message and sets a variable, status, that is not available outside of this method" do
-    expect{rescue_princess_peach}.to output("Hooray! Mario has rescued Princess Peach.\n").to_stdout 
     expect{rescue_princess_peach}.to output("Hooray! Mario has rescued Princess Peach.\n").to_stdout
     expect{puts status}.to raise_error(NameError)
-  end 
   end
 end
 ```
