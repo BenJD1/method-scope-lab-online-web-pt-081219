@@ -22,8 +22,6 @@ end
 Let's take a look at the test for this method in `spec/catch_phrase_spec.rb`:
 
 ```ruby
-describe "#catch_phrase" do 
-  it "puts out a catch phrase" do 
 describe "#catch_phrase" do
   it "puts out a catch phrase" do
     phrase = "It's-a me, Mario!"
@@ -31,16 +29,21 @@ describe "#catch_phrase" do
   end
 end
 ```
+
 Go ahead and run the test for this method only by typing `rspec spec/catch_phrase_spec.rb` into your terminal in the directory of this lab. You should see the following error:
+
 ```ruby
 NameError:
        undefined local variable or method `phrase' for #<RSpec::ExampleGroups::CatchPhrase:0x007f87b9cf04c0>
 ```
+
 This error is occurring because the code inside the `#catch_phrase` method is trying to use the `phrase` variable **but** we defined this variable on line 5 of our test. In other words, this variable is being defined *outside of the method*. Our method doesn't have access to it! **It is out of scope.** Let's fix it!
+
 We need to pass `phrase` into our `#catch_phrase` as an argument. Let's do it:
-1. Re-define the `#catch_phrase` method to take in an argument of a phrase. 
+
 1. Re-define the `#catch_phrase` method to take in an argument of a phrase.
 2. Change the test in `spec/catch_phrase_spec.rb` to match the following:
+
 ```ruby
 require "spec_helper"
 describe "#catch_phrase" do 
